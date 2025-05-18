@@ -1,6 +1,6 @@
 import streamlit as st
-import plotly.express as px
 import pandas as pd
+import numpy as np
 
 # Sample data: Cities with their coordinates
 data = {
@@ -11,11 +11,5 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Create a map using Plotly
-fig = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_name="City", zoom=1)
-
-# Use OpenStreetMap style for the map
-fig.update_layout(mapbox_style="open-street-map")
-
-# Display the map in Streamlit
-st.plotly_chart(fig)
+# Display the map
+st.map(df[['Latitude', 'Longitude']])
